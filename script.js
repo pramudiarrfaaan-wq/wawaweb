@@ -1,78 +1,78 @@
-// status biar cuma bisa pilih 1 kartu
-let sudahPilih = false;
+let kategori = "";
+let kartuDibuka = 0;
+let hasilList = [];
 
-// data ramalan (lebih banyak & realistis)
-const ramalanData = {
-    cinta: [
-        "Seseorang mulai memperhatikanmu diam-diam ❤️",
-        "Hubunganmu akan memasuki fase lebih serius",
-        "Jangan terlalu bergantung pada perasaan orang lain",
-        "Cinta datang di waktu yang tidak terduga"
-    ],
-    karir: [
-        "Kesempatan baru akan muncul dalam waktu dekat 💼",
-        "Kerja kerasmu mulai terlihat hasilnya",
-        "Hati-hati dengan keputusan terburu-buru",
-        "Ada peluang besar jika kamu berani mencoba"
-    ],
-    keuangan: [
-        "Keuanganmu cukup stabil saat ini 💰",
-        "Hindari pengeluaran impulsif",
-        "Ada peluang rezeki tak terduga",
-        "Waktunya mulai menabung lebih serius"
-    ]
+const data = {
+    cinta: ["Cinta baru datang", "Hubungan makin kuat", "Ada yang diam-diam suka"],
+    karir: ["Kesempatan besar datang", "Kerja keras berhasil", "Coba hal baru"],
+    keuangan: ["Rezeki datang", "Hemat ya", "Keuangan stabil"]
 };
 
-// fungsi buka kartu
-function bukaKartu(card, jenis) {
-    if (sudahPilih) return; // cuma 1x pilih
+function pilihKategori(k) {
+    kategori = k;
+}
 
-    sudahPilih = true;
+function bukaKartu(card) {
+    if (!kategori) {
+        alert("Pilih kategori dulu!");
+        return;
+    }
 
-    const hasil = document.getElementById("hasil");
+    if (kartuDibuka >= 3) return;
 
-    // flip kartu
     card.classList.add("flip");
-    card.style.boxShadow = "0 0 20px gold";
 
-    // disable kartu lain
-    document.querySelectorAll(".card").forEach(k => {
-        k.style.pointerEvents = "none";
-        k.style.opacity = "0.5";
-    });
+    let random = Math.floor(Math.random() * data[kategori].length);
+    hasilList.push(data[kategori][random]);
 
-    card.style.opacity = "1";
+    kartuDibuka++;
 
-    // efek loading
-    hasil.innerHTML = "🔮 Membaca energi semesta...";
-
-    // ambil random ramalan
-    const list = ramalanData[jenis];
-    const random = Math.floor(Math.random() * list.length);
-
-    // delay biar dramatis
-    setTimeout(() => {
-        hasil.innerHTML = `
-            <div class="hasil-box">
-                <h2>✨ Hasil Tarot</h2>
-                <p>${list[random]}</p>
-                <button onclick="resetTarot()">🔁 Coba Lagi</button>
-            </div>
-        `;
-    }, 1200);
+    if (kartuDibuka === 3) {
+        tampilkanHasil();
+    }
 }
 
-// reset (biar bisa ulang)
-function resetTarot() {
-    sudahPilih = false;
+function tampilkanHasil() {
+    let nama = document.getElementById("nama").value || "Kamu";
 
-    const hasil = document.getElementById("hasil");
-    hasil.innerHTML = "";
+    document.getElementById("hasil").innerHTML = `
+        <div class="hasil-box">
+            <h2>🔮 Hasil Tarot untuk ${nama}</h2>
+            <p>🕰️ Masa Lalu: ${hasilList[0]}</p>
+            <p>✨ Sekarang: ${hasilList[1]}</p>
+            <p>🌙 Masa Depan: ${hasilList[2]}</p>
+        </div>
+    `;
+}
 
-    document.querySelectorAll(".card").forEach(card => {
-        card.classList.remove("flip");
-        card.style.pointerEvents = "auto";
-        card.style.opacity = "1";
-        card.style.boxShadow = "none";
+/* animasi bintang */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+
+for (let i = 0; i < 100; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2
     });
 }
+
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "white";
+
+    stars.forEach(s => {
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+        s.y += 0.3;
+        if (s.y > canvas.height) s.y = 0;
+    });
+
+    requestAnimationFrame(drawStars);
+}
+
+drawStars();
