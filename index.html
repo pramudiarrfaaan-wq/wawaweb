@@ -1,46 +1,70 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Zodiak</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Mystical Ultimate</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="hero">
-    <h1>🔮 Tarot Reading</h1>
-    <p>Pilih satu kartu untuk melihat ramalanmu hari ini</p>
+<canvas id="stars"></canvas>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>🔮 Tarot Mystical</h2>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Temukan Takdirmu</h1>
+    <p>Masukkan namamu dan pilih 3 kartu tarot</p>
+</section>
+
+<!-- INPUT NAMA -->
+<div class="input-area">
+    <input type="text" id="nama" placeholder="Masukkan namamu...">
 </div>
 
-<!-- KARTU TAROT -->
+<!-- KATEGORI -->
+<div class="kategori">
+    <button onclick="pilihKategori('cinta')">❤️ Cinta</button>
+    <button onclick="pilihKategori('karir')">💼 Karir</button>
+    <button onclick="pilihKategori('keuangan')">💰 Keuangan</button>
+</div>
+
+<!-- TAROT -->
 <div class="container">
-
-    <div class="card" onclick="bukaKartu(this, 'cinta')">
-        <div class="inner">
-            <div class="front">🃏</div>
-            <div class="back">❤️ Cinta</div>
-        </div>
+    <div class="card" onclick="bukaKartu(this)">
+        <div class="inner"><div class="front">🃏</div><div class="back">Masa Lalu</div></div>
     </div>
-
-    <div class="card" onclick="bukaKartu(this, 'karir')">
-        <div class="inner">
-            <div class="front">🃏</div>
-            <div class="back">💼 Karir</div>
-        </div>
+    <div class="card" onclick="bukaKartu(this)">
+        <div class="inner"><div class="front">🃏</div><div class="back">Sekarang</div></div>
     </div>
-
-    <div class="card" onclick="bukaKartu(this, 'keuangan')">
-        <div class="inner">
-            <div class="front">🃏</div>
-            <div class="back">💰 Keuangan</div>
-        </div>
+    <div class="card" onclick="bukaKartu(this)">
+        <div class="inner"><div class="front">🃏</div><div class="back">Masa Depan</div></div>
     </div>
-
 </div>
 
 <!-- HASIL -->
 <div id="hasil" class="hasil"></div>
+
+<!-- VIDEO -->
+<div class="section">
+    <h2>🎥 Video Tarot</h2>
+    <iframe src="https://www.youtube.com/embed/6xKWiCMKKJg"></iframe>
+</div>
+
+<!-- MAPS -->
+<div class="section">
+    <h2>📍 Lokasi Saya</h2>
+    <iframe src="https://www.google.com/maps?q=Jakarta&output=embed"></iframe>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Wawa - Tarot Ultimate</p>
+</footer>
 
 <script src="script.js"></script>
 </body>
