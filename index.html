@@ -1,48 +1,47 @@
 <!DOCTYPE html>
-<html lang ="en">
- <head>
-      <title>Delayota</title>
-      <link rel="stylesheet" href="style.css">
- </head>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarot Zodiak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<div class="header">
-    <div class="jarak">
-       <h2>Belajar Membuat Layout Dengan HTML dan CSS</h2>
-    </div>
-</div>
-<div class="menu">
-        <ul>
-                 <li><a href="index.html">Home</a><li><li>
-                 <li><a href="#">"about.html">About</a></li>
-                 <li><a href="#">Blog</a></li>
-                 <li><a href="#"Contact>Contact</a></li>
-        </u1>
-</div>
-    <h3>HTML</h3>
- 
-    <h3>HTML</p>
-    <button>Selengkapnya...</button>
-<li><a href="#">Contact</a></li>
-<h3>HTML</h3>
-<p>HTML atau HyperText Markup Language merupakan sebuah bahasa markah untuk membuat halaman web </p>
-<button >Selengkapnya ..</button>
-<h3>CSS</h3>
-<p>CSS atau Cascading StyleSheet adalah ...[...]</p)
-/u1>
-<button >selengkapnya ..</button>
-<h3>CATEGORY</h3>
-<ul>
-<p><a href="#">HTML</a></p>
-<p><a href="#”>CSS</a></p>
-<p><a href="#”>BOOTSTRAP</a></p>
-<p><a href="#”>PHP</a></p>
-<p><a href="#">MYSQL</a></p>
-<p><a href="#">Jquery</ax</p>
-<p><a href="#">Ajax</a></p>
-</u1>
-<p>copyright 2026 delayota all reserved</p>
-</body>
 
- </H1>
+<div class="hero">
+    <h1>🔮 Tarot Reading</h1>
+    <p>Pilih satu kartu untuk melihat ramalanmu hari ini</p>
+</div>
+
+<!-- KARTU TAROT -->
+<div class="container">
+
+    <div class="card" onclick="bukaKartu(this, 'cinta')">
+        <div class="inner">
+            <div class="front">🃏</div>
+            <div class="back">❤️ Cinta</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="bukaKartu(this, 'karir')">
+        <div class="inner">
+            <div class="front">🃏</div>
+            <div class="back">💼 Karir</div>
+        </div>
+    </div>
+
+    <div class="card" onclick="bukaKartu(this, 'keuangan')">
+        <div class="inner">
+            <div class="front">🃏</div>
+            <div class="back">💰 Keuangan</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- HASIL -->
+<div id="hasil" class="hasil"></div>
+
+<script src="script.js"></script>
 </body>
-<HTML>
+</html>
